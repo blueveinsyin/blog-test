@@ -1,7 +1,11 @@
 # html5全解
+最新版html有110个标签
 
 ## www历史
 www = url + html + http
+
+## HTML是谁发明的
+HTML是由Web的发明者 Tim Berners-Lee和同事创建的
 
 ## 如何制作网页
 1. 域名知识
@@ -9,10 +13,7 @@ www = url + html + http
 3. html知识
 4. 其他
 
-## html
-最新版html有110个标签
-
-### html5技术集合
+## html5技术集合
 1. 新标签、新属性
 2. 新的通信技术：WebSockets、webRTC
 3. 离线存储技术：LocalStorage、断网检测
@@ -22,34 +23,44 @@ www = url + html + http
 7. 设备相关技术：摄像头、触摸屏
 8. 新的样式技术：CSS3新的Flex、Grid布局方式
 
-### 学会一门语言要会：
+## 学会一门语言要会：
 1. 语法（怎么写代码）
 2. 如何调试（如何找错）
 3. 在哪查资料
 4. 标准制定者是谁
 
-### 如何学：
+## 如何学：
 1. 抄文档
 2. 在自己的机器上运行
 3. 加一点自己的想法，然后重新运行
 
-### HTML语法
-<!DOCTYPE html> 文档类型，告诉浏览器这是html文档
+## HTML语法
+`<!DOCTYPE html>` 文档类型，告诉浏览器这是html文档
 大小写无所谓的 一般都是小写
 没有特殊字符的时候，标签的属性可以不加引号
 格式都用utf-8
 language 都用zh-CN
 
-### 如何调试代码+在哪查资料
+## 如何调试代码+在哪查资料
 使用vscode、webstorm颜色提示
 使用 node w3c validator npm
 google + mdn
 
-### 工具
+## 工具
 jsbin 可以分享给别人，但是只能创建一个文件；
 codesandbox 相当于在想的vscode
 
+## HTML 起手应该写什么
+shift + ! 然后 tab
+
 ### 全局属性
+
+### 常用的表章节标签
+h1~h6: 是headings 6个级别的标题
+section: 是不同的章节
+article: 正文
+main: 页面的主要内容
+aside: main、header、footer之外的内容可以用aside标签，一般做导航
 
 #### class
 写法1: `[class = class1 class2 ]`不能识别其中一个，会把class1空格class2当作一个整体
