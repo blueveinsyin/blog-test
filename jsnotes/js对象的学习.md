@@ -37,7 +37,7 @@ null undefine NaN '' 0
 * 我们需要明白 属性值位为undefined 和 不含属性名 是不一样的
 * `'xxx' in obj === false` 可以判断 obj 中以及不含属性名 xxx 了
 * `'xxx' in obj && obj.xxx === undefined` 表示obj含有属性名xxx,但是值为undefined
-* 判断obj是否有某个属性值 只能用 in 
+* 判断obj是否有某个属性值 只能用 in;`obj.xxx === undefined` 不可以
 
 #### 读属性
 * Object.keys(obj) 返回所有的属性
@@ -77,6 +77,4 @@ null undefine NaN '' 0
 
 #### 直接修改原型
 * `var person = Object.create(common,{name:{value:'frank'}})`
-
-
-
+* create创造的属性是原型属性,不是person的自身属性
