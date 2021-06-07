@@ -118,8 +118,68 @@ add(4,5)//9
 * `let fn = function(){}`这种写法不回存在函数提升
 
 ## arguments && this
-* 出来箭头函数，每个函数都有
-* arguments 是一个伪数组，它没有数组的共有属性
+### arguments
+* arguments 是一个包含了所有参数的伪数组，它没有数组的共有属性
 * 用Array.from()可以变成伪数组
 
+### this
 * 如果不给任何的条件，this默认是window（一般不用）
+* 函数中的this最终就是调用函数的对象```person.sayHi()```
+
+#### 两种调用方法
+1. ```person.sayHi()```
+* 自动把person这个实例传到函数调用的实参里面，作为this；
+2. person.sayHi.call(person); 这个方法可以帮助我们理解this
+* 需要手动把person传到函数中，作为this
+```js
+let person = {
+    name:'frank',
+    sayHi(){
+        console.log(this.name)
+    }
+}
+person.sayHi.call({name:1}) // 返回1
+person.sayHi.call({name:jack}) // 返回jack
+person.sayHi.call(person) // 返回frank
+
+function add(x,y){
+    return x+y
+}
+add.call(undefined,1,3) //add.call(this,arguments[1,3]) 返回4
+```
+
+#### this两种使用方法
+1. 隐式传递
+* fn(1,2) 等价于 fn.call(undefine,1,2)
+* obj.child.fn(1) 等价于 obj.child.fn.call(obj.child,1)
+
+2. 显示传递
+* fn.call(undefiend,1,2)
+* fn.apply(undefined,[1,2])
+
+#### 绑定this
+* 使用.bind可以让this不被改变
+```js
+function f1(p1,p2){
+    console.log(this,p1,p2)
+}
+let f2 = f1.bind({name:'mike'})
+//那么f2就是f1绑定了this之后的新函数
+//f2() 等价于 f1.call({name:'mike'}) f2 是f1的绑定版函数，绑定了this
+```
+
+* .bind 可以绑定其他参数
+```js
+let f3 = f1.bind({name:'mike'},'hi')
+f3() //等价于 f1.call({name:'mike'},'hi') 绑定了this 和 p1
+```
+
+## 箭头函数
+* 箭头函数没有 arguments 和 this，如果出现了就可以忽略
+* 箭头函数里面的this 就是外面的this
+```js
+console.log(this)//window
+let fn = () =>{console.log(this)}
+fn()// 返回window
+fn.call({name:'mike'})//返回window
+```
