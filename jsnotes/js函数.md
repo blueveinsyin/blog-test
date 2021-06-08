@@ -183,3 +183,12 @@ let fn = () =>{console.log(this)}
 fn()// 返回window
 fn.call({name:'mike'})//返回window
 ```
+
+## 立即执行函数
+* 再没有发明let之前，如果想在函数作用域内声明变量，需要用到立即执行函数
+```js
+!function(){
+    var a = 2
+}()
+```
+
