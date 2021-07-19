@@ -134,3 +134,72 @@ let quickSort = arr =>{
     return quickSort(left).concat([pivot],quickSort(right))
 }
 ```
+
+### 归并排序
+```js
+let mergeSort = arr =>{
+    let k = arr.length
+    if(k===1){return arr}
+    let left = arr.slice(0,Math.floor(k/2))
+    let right = arr.slice(Math.floor(k/2))
+    return merge(mergeSort(left),mergeSort(right))
+}
+
+let merge = (a,b)=>{//a, b是array
+    if(a.length === 0) return b
+    if(b.length === 0) return a
+    return a[0] > b[0] ?
+        [b[0]].concat(merge(a,b.slice(1))) :
+        [a[0]].concat(merge(a.slice(1),b))
+}
+```
+
+### 计数排序
+* 哈希表记录
+```js
+let countSort = arr =>{
+    let hashTable = {}, max = 0, result = []
+    for(let i=0; i<arr.length; i++){
+        if(!(arr[i] in hashTable)){
+            hashTable[arr[i]] = 1
+        }else{
+            hashTable[arr[i]] += 1
+        }
+        if(arr[i] > max){max = arr[i]}
+    }
+    for(let j=0; j<=max; j++){
+        if(j in hashTable){
+            for(let i = 0; i<hashTable[j]; i++){
+                result.push(j)
+            }
+        }
+    }
+    return result
+}
+
+```
+
+### 堆排序
+
+#### queue队列
+* 先进先出的数组
+* 比如餐厅叫号系统
+
+##### 栈stack
+* 后进先出为栈
+* 调用栈就是后进先出
+
+##### 链表 linked list
+* 比如原型链
+
+#### 哈希表
+* 哈希表的难点
+* 如何读取hash['xxx']最快
+* 如果做二分法，复杂度就是O(log2n)
+* 如果对字符串对应的ACSII数字做索引，对索引做除法取余数，复杂度就是O(1);如果有冲突，就顺延
+
+#### 树
+* 是链表的升级，可以连接多个
+* 中国的省市区，可以看作一个树
+* 公司的层级结构，可以看作一个树
+* 网页中的节点，可以看作一个树
